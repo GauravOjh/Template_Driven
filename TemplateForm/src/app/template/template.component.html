@@ -1,0 +1,21 @@
+
+<div class="main-container">
+    <h1>Template Form</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div>
+            <label class="lab" for="name">UserName</label>
+            <input class="inp" ngModel name="name" required type="text" id="name" #name="ngModel">
+            <small *ngIf="!name.valid && name.touched">Username is required</small>
+        </div>
+        <div>
+            <label class="lab" for="email">Email</label>
+            <input class="inp" ngModel name="email" required email type="email" id="email" #email="ngModel">
+            <small *ngIf="email.errors && email.touched">Email is required</small>
+        </div>
+        <div>
+            <input type="checkbox" [ngModel]="true">
+            <label for="terms" style="margin-top: 10px;">I've read and agree to the terms and conditions.</label>
+        </div>
+        <button style="margin: 10px;" [disabled]="!myForm.valid"  type="submit">Save</button>
+    </form>
+</div>
